@@ -37,6 +37,13 @@ const checks = [
   ['no lorem ipsum', !html.includes('lorem')],
   ['no TODO', !html.includes('TODO')],
   ['no placeholder href', !html.includes('href="#"')],
+  // Pagination checks
+  ['pagination: page info', html.includes('Halaman') && html.includes('dari')],
+  ['pagination: prev button', html.includes('Sebelumnya')],
+  ['pagination: next button', html.includes('Berikutnya')],
+  ['pagination: items count', html.includes('Menampilkan') && html.includes('dari') && html.includes('proyek')],
+  ['pagination: page dots', html.includes('aria-label="Halaman 1"')],
+  ['pagination: prev disabled on page 1', html.includes('disabled')],
 ]
 
 let allPass = true

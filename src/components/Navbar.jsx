@@ -8,6 +8,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeRoute, setActiveRoute] = useState('#/')
   const menuRef = useRef(null)
+  const toggleRef = useRef(null)
 
   // Track scroll for navbar styling
   useEffect(() => {
@@ -23,11 +24,16 @@ export default function Navbar() {
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
 
-  // Close mobile menu on outside click
+  // Close mobile menu on outside click (but not on toggle button)
   useEffect(() => {
     if (!mobileOpen) return
     const onClick = (e) => {
-      if (menuRef.current && !menuRef.current.contains(e.target)) {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(e.target) &&
+        toggleRef.current &&
+        !toggleRef.current.contains(e.target)
+      ) {
         setMobileOpen(false)
       }
     }
@@ -63,7 +69,9 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass' : 'bg-transparent'
+        scrolled
+          ? 'glass'
+          : 'bg-white/80 backdrop-blur-md border-b border-line dark:bg-ink-950/80 dark:border-ink-700/30'
       }`}
     >
       <nav className="mx-auto max-w-6xl px-4 sm:px-6" aria-label="Navigasi utama">
@@ -148,6 +156,7 @@ export default function Navbar() {
             </button>
 
             <button
+              ref={toggleRef}
               onClick={() => setMobileOpen(!mobileOpen)}
               className="p-2 rounded-lg text-ink-400 hover:text-ink-100 hover:bg-ink-800/50 transition-colors"
               aria-label={mobileOpen ? 'Tutup menu' : 'Buka menu'}
