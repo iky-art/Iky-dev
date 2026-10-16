@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Base ===== */
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  html:not(.dark) body {
+    @apply bg-paper text-ink-900;
+  }
+
+  html.dark body {
+    @apply bg-ink-950 text-ink-100;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  section[id] {
+    scroll-margin-top: 4rem;
+  }
+
+  ::selection {
+    @apply bg-electric-500/30;
+  }
+
+  :focus-visible {
+    outline: 2px solid #3576ff;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+/* ===== Neomorphism Utilities ===== */
+@layer components {
+  .neo-raised {
+    @apply bg-ink-850;
+    box-shadow:
+      8px 8px 16px rgba(0, 0, 0, 0.4),
+      -4px -4px 12px rgba(255, 255, 255, 0.03);
+  }
+
+  html:not(.dark) .neo-raised {
+    @apply bg-surface;
+    box-shadow:
+      8px 8px 16px rgba(0, 0, 0, 0.06),
+      -4px -4px 12px rgba(255, 255, 255, 0.8);
+  }
+
+  .neo-inset {
+    @apply bg-ink-900;
+    box-shadow:
+      inset 4px 4px 8px rgba(0, 0, 0, 0.3),
+      inset -2px -2px 6px rgba(255, 255, 255, 0.02);
+  }
+
+  html:not(.dark) .neo-inset {
+    @apply bg-surface-dim;
+    box-shadow:
+      inset 4px 4px 8px rgba(0, 0, 0, 0.05),
+      inset -2px -2px 6px rgba(255, 255, 255, 0.6);
+  }
+
+  /* ===== Liquid Glass (controlled, only on key elements) ===== */
+  .glass {
+    @apply bg-ink-900/80 backdrop-blur-xl;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  html:not(.dark) .glass {
+    @apply bg-white/70 backdrop-blur-xl;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  /* ===== Typography ===== */
+  .type-display {
+    @apply font-display font-bold tracking-tight;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+  }
+
+  .type-heading {
+    @apply font-display font-bold tracking-tight;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.2;
+  }
+
+  .type-label {
+    @apply font-sans font-semibold uppercase tracking-widest;
+    font-size: 0.6875rem;
+    line-height: 1.4;
+  }
+
+  .type-body {
+    @apply font-sans;
+    font-size: 0.9375rem;
+    line-height: 1.625;
+  }
+
+  /* ===== Nav link ===== */
+  .nav-link {
+    @apply relative text-ink-400 hover:text-ink-100 transition-colors duration-200;
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+
+  html:not(.dark) .nav-link {
+    @apply text-ink-500 hover:text-ink-900;
+  }
+
+  .nav-link.active {
+    @apply text-electric-400;
+  }
+
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    @apply bg-electric-500 rounded-full;
+  }
+
+  /* ===== Buttons ===== */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5;
+    @apply bg-electric-500 text-white font-medium text-sm;
+    @apply hover:bg-electric-600 active:bg-electric-700;
+    @apply transition-all duration-200 ease-out-expo;
+    @apply shadow-lg shadow-electric-500/20;
+    min-height: 40px;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5;
+    @apply bg-ink-800 text-ink-100 font-medium text-sm;
+    @apply border border-ink-700 hover:border-ink-600;
+    @apply transition-all duration-200 ease-out-expo;
+    min-height: 40px;
+  }
+
+  html:not(.dark) .btn-secondary {
+    @apply bg-surface text-ink-900 border-line hover:border-line-strong;
+  }
+
+  /* ===== Card ===== */
+  .card {
+    @apply rounded-xl p-5;
+    @apply bg-ink-850 border border-ink-700/50;
+    @apply transition-all duration-300 ease-out-expo;
+  }
+
+  html:not(.dark) .card {
+    @apply bg-surface border-line;
+  }
+
+  .card:hover {
+    @apply border-electric-500/30;
+    transform: translateY(-2px);
+  }
+
+  /* ===== Section divider ===== */
+  .section-divider {
+    border-top: 1px solid;
+    @apply border-ink-700/50;
+  }
+
+  html:not(.dark) .section-divider {
+    @apply border-line;
+  }
+
+  /* ===== Reduced motion ===== */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}

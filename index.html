@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>IKY Dev — Developer · Founder · Builder</title>
+    <meta name="description" content="Portofolio IKY — Developer, Founder, dan Builder. Fokus pada pengembangan web, open-source, dan produk digital." />
+    <meta name="author" content="IKY" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://iky-portofolio.my.id/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="IKY Dev" />
+    <meta property="og:title" content="IKY Dev — Developer · Founder · Builder" />
+    <meta property="og:description" content="Portofolio IKY — Developer, Founder, dan Builder. Fokus pada pengembangan web, open-source, dan produk digital." />
+    <meta property="og:url" content="https://iky-portofolio.my.id/" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="IKY Dev — Developer · Founder · Builder" />
+    <meta name="twitter:description" content="Portofolio IKY — Developer, Founder, dan Builder." />
+    <meta name="twitter:url" content="https://iky-portofolio.my.id/" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#0a0a0f" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Prevent FOUC -->
+    <script>
+      (function () {
+        var stored = localStorage.getItem('iky-theme');
+        var dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

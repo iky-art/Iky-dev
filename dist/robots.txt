@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://iky-portofolio.my.id/sitemap.xml
